@@ -18,12 +18,12 @@ fi
 echo "Pid found: $pid"
 lastmem=$(ps -v -p $pid | awk 'END{print $8}')
 difference=0
-echo -e $(timestamp) "\t" $lastmem"KB"
+echo -e $(timestamp)"\t"$lastmem" KB"
 while true; do
 	mem=$(ps -v -p $pid | awk 'END{print $8}')
 	if [[ $mem != $lastmem ]]; then
 	difference=$(($mem - $lastmem))
-	echo -e $(timestamp)"\t"$lastmem"KB\tDifference: "$difference
+	echo -e $(timestamp)"\t"$mem" KB\tDifference: "$difference
 	lastmem=$mem
 	sleep 0.5
 	fi
