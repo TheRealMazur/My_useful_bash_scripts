@@ -1,8 +1,10 @@
 #!/bin/bash
-#Napiprojekt Subtitles download by ID
-#Here's a crude script which allows you to download movie subtitles from Napiprojekt servers by their ID.
-#Just run it whit the ID as parameter :
-#"$./NapiprojektSubtitlesDownloader d05ce44cda59d7ab5217aae63f1da8dc"
+# Napiprojekt Subtitles download by ID
+# Here's a crude script which allows you to download movie subtitles from Napiprojekt servers by their ID.
+# To get the ID go to the webpage https://www.napiprojekt.pl/napisy-szukaj, 
+# search for desired title, go to subtitles catalogue and get the ID from the links
+# Then, just run it with the ID as parameter :
+# ./NapiprojektSubtitlesDownloader d05ce44cda59d7ab5217aae63f1da8dc
 temp=$(curl -X POST -s -F mode=17 -F client=NapiProjekt -F downloaded_subtitles_id=$1 http://napiprojekt.pl/api/api-napiprojekt3.php)
 temp=$( echo $temp | grep -oE "<content>.*</content>")
 temp=$( echo $temp | sed -e 's|<content><!\[CDATA\[||1')
